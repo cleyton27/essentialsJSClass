@@ -24,22 +24,29 @@ var pesoEvalido = true;
 var alturaValida = true;
 
 
-if (peso <= 0 || peso> 1000 ) {
+if (peso <= 0 || peso>= 1000 ) {
   console.log("pesso invalido");
-  tdPeso.textContent = "Peso invalido"
+  tdImc.textContent = "Peso invalido"
   pesoEvalido = false;
+  //.style.color replace the color this method manipulates CSS elements
+//  paciente.style.backgroundColor="lightcoral";
+
+//.classList.add(); the remcommended way of to change elementes in class
+paciente.classList.add("paciente-invalido")
 }
 
 if(altura <=0 || altura >= 4.00){
   console.log("altura invalida");
-  tdAltura.textContent = "altura invalida";
+  tdImc.textContent = "altura invalida";
   alturaValida = false;
+  paciente.classList.add("paciente-invalido");
 }
 
 if (alturaValida == true && pesoEvalido == true) {
 
   var imc = peso/(altura*altura);
-  tdImc.textContent = imc;
+  //.toFixed show just the number of decimal place selceted
+  tdImc.textContent = imc.toFixed(2);
 console.log(imc);
 
 }
