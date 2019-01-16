@@ -39,7 +39,7 @@ if(altura <=0 || altura >= 4.00){
   console.log("altura invalida");
   tdImc.textContent = "altura invalida";
   alturaValida = false;
-  paciente.classList.add("paciente-invalido");
+  paciente.classList.add("paciente-invalido ");
 }
 
 if (alturaValida == true && pesoEvalido == true) {
@@ -50,8 +50,73 @@ if (alturaValida == true && pesoEvalido == true) {
 console.log(imc);
 
 }
-
 }
+
+
+var botaoAdcionar = document.querySelector("#adicionar-paciente")
+
+/*.event.preventDefault(); prevents the behavior Default and recive
+the paremeter called event
+*/
+botaoAdcionar.addEventListener("click", function(event){
+  event.preventDefault();
+
+  var form = document.querySelector("#form-add");
+ /*form.altura acess the element by name
+  console.log(form.altura);
+  //form.altura.value get the value of the input
+  console.log(form.altura.value);
+  console.log(form.peso.value);
+*/
+var nome = form.nome.value;
+var peso = form.peso.value;
+var altura = form.altura.value;
+var gordura = form.gordura.value;
+
+//document.createElement(); creat HTML elements ex"tables"
+var pacienteTr = document.createElement("tr");
+
+var nomeTd = document.createElement("td");
+var pesoTd = document.createElement("td");
+var alturaTd = document.createElement("td");
+var gorduraTd = document.createElement("td");
+var imcTd = document.createElement("td");
+
+nomeTd.textContent = nome;
+pesoTd.textContent = peso;
+alturaTd.textContent = altura;
+gorduraTd.textContent = gordura;
+imcTd.textContent = imc.toFixed(2);
+
+//.appendChild() put a elment insed other
+ pacienteTr.appendChild(nomeTd);
+ pacienteTr.appendChild(pesoTd);
+ pacienteTr.appendChild(alturaTd);
+ pacienteTr.appendChild(gorduraTd);
+ pacienteTr.appendChild(imcTd);
+
+ console.log(pacienteTr);
+
+ var table = document.querySelector("#tabela-pacientes");
+
+ table.appendChild(pacienteTr);
+
+});
+  console.log(botaoAdcionar);
+//.addEventListener listening an event when the user click
+//also is possible to pass more than one paremeter
+
+//title.addEventListener("click", mostrarMensagem);
+
+/*title.addEventListener is possible also to use anonymous function
+title.addEventListener("click", function(){
+  console.log("utilzando função anonima");
+})
+/*
+function mostrarMensagem() {
+  console.log("Hello world");
+}
+*/
 
 
 
