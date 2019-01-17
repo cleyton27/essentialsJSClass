@@ -3,24 +3,21 @@ botaoAdcionar.addEventListener("click", function(event){
   event.preventDefault();
 
 
-var form = document.querySelector("#form-add");
+ var form = document.querySelector("#form-add");
 
 //Extraindo informações do paciente do form
 var paciente = obterPacienteDoFormulario(form);
 console.log(paciente);
 //
 //Adiconando o paciente na tabela
- var table = document.querySelector("#tabela-pacientes");
-
+var table = document.querySelector("#tabela-pacientes");
 
 var pacienteTr =  montarTr(paciente);
 
-
-
-
- //console.log(pacienteTr);
-
  table.appendChild(pacienteTr);
+
+//.reset(); clean the filds form
+ form.reset();
 
 });
 
