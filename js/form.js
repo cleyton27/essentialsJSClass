@@ -14,6 +14,12 @@ var table = document.querySelector("#tabela-pacientes");
 
 var pacienteTr =  montarTr(paciente);
 
+if (!validaPaciente(paciente)) {
+  console.log("Paciente invalido");
+  return;
+}
+
+
  table.appendChild(pacienteTr);
 
 //.reset(); clean the filds form
@@ -59,4 +65,12 @@ function montaTd(dado, classe){
   td.classList.add(classe);
 
   return td;
+}
+
+function validaPaciente(paciente){
+  if(validaPeso(paciente.peso)){
+    return true;
+  }else {
+    return false;
+  }
 }
