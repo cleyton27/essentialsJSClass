@@ -14,8 +14,12 @@ var table = document.querySelector("#tabela-pacientes");
 
 var pacienteTr =  montarTr(paciente);
 
-if (!validaPaciente(paciente)) {
-  console.log("Paciente invalido");
+var erro  = validaPaciente(paciente);
+console.log(erro);
+
+if (erro.length >0) {
+   var messagemErro = document.querySelector("#mensagem-erro");
+   messagemErro.textContent = erro;
   return;
 }
 
@@ -68,9 +72,17 @@ function montaTd(dado, classe){
 }
 
 function validaPaciente(paciente){
-  if(validaPeso(paciente.peso)){
-    return true;
-  }else {
-    return false;
+var erro =[];
+
+  //se o peso não for valida o erro é mostrado
+  if(!validaPeso(paciente.peso)){
+      //coloca uma String dentro do array
+      erros.push("Pesso invalido!");
   }
+
+  if (!validaAltura(paciente.altura))
+    erro.push("Altura invalida!");
+
+
+  return erros;
 }
