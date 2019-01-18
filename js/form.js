@@ -3,30 +3,33 @@ botaoAdcionar.addEventListener("click", function(event){
   event.preventDefault();
 
 
- var form = document.querySelector("#form-add");
+var form = document.querySelector("#form-add");
 
 //Extraindo informações do paciente do form
 var paciente = obterPacienteDoFormulario(form);
 console.log(paciente);
 //
 //Adiconando o paciente na tabela
-var table = document.querySelector("#tabela-pacientes");
+ var table = document.querySelector("#tabela-pacientes");
+
 
 var pacienteTr =  montarTr(paciente);
+var erro = validaPaciente(paciente);
 
-var erros  = validaPaciente(paciente);
-console.log(erros);
-
-if (erros.length >0) {
-  exibeMensagensDeErro(erros);
+//check if the lenght is bigger than 0
+if (erro.length >0) {
+  console.log("Paciente invaldo");
+  var msg = document.querySelector("#mensagens-erro");
+  msg.textContent = erro;
+  //void return go out of function without execute
   return;
 }
 
 
- table.appendChild(pacienteTr);
 
-//.reset(); clean the filds form
- form.reset();
+ //console.log(pacienteTr);
+
+ table.appendChild(pacienteTr);
 
 });
 
@@ -71,28 +74,20 @@ function montaTd(dado, classe){
 }
 
 function validaPaciente(paciente){
-var erros =[];
+  var erros =[];
 
-  //se o peso não for valida o erro é mostrado
-  if(!validaPeso(paciente.peso)){
-      //coloca uma String dentro do array
-      erros.push("Pesso invalido!");
+  if(validaPeso(paciente.peso)){
+  }else{
+    //.push put elements inside of array
+    erros.push("Pesso invalido!");
   }
 
-  if (!validaAltura(paciente.altura))
+  if (validaAltura(pacinte.altura)) {
+
+  }else{
     erros.push("Altura invalida!");
+  }
 
-
-  return erros;
-}
-
-function exibeMensagensDeErro(erros) {
-  var ul = document.querySelector("#messagens-erro");
-  erros.forEach(function(erro){
-       var li = document.createElement("li");
-       li.textContent = erro;
-       console.log(li);
-       ul.appendChild(li);
-  });
+return erros;
 
 }
