@@ -76,15 +76,12 @@ function montaTd(dado, classe){
 function validaPaciente(paciente){
   var erros =[];
 
-  if(validaPeso(paciente.peso)){
-  }else{
+  if(!validaPeso(paciente.peso)){
     //.push put elements inside of array
     erros.push("Pesso invalido!");
   }
 
-  if (validaAltura(pacinte.altura)) {
-
-  }else{
+  if (!validaAltura(pacinte.altura)) {  
     erros.push("Altura invalida!");
   }
 
