@@ -14,24 +14,35 @@ console.log(paciente);
 
 
 var pacienteTr =  montarTr(paciente);
-var erro = validaPaciente(paciente);
+var erros = validaPaciente(paciente);
 
+console.log(erros);
 //check if the lenght is bigger than 0
-if (erro.length >0) {
+if (erros.length >0) {
+  exibeMensagensDeErro(erros);
   console.log("Paciente invaldo");
   var msg = document.querySelector("#mensagens-erro");
-  msg.textContent = erro;
+
   //void return go out of function without execute
   return;
 }
-
-
-
  //console.log(pacienteTr);
 
  table.appendChild(pacienteTr);
 
+ form.reset();
+
 });
+
+function exibeMensagensDeErro(erros){
+  var ul = document.querySelector("#mensagens-erro")
+  erros.forEach(function(erro){
+    var li = document.createElement("li");
+    li.textContent =erro;
+    ul.appendChild(li);
+  });
+
+}
 
 function obterPacienteDoFormulario(form){
 //creating Object with atributes
@@ -81,7 +92,7 @@ function validaPaciente(paciente){
     erros.push("Pesso invalido!");
   }
 
-  if (!validaAltura(pacinte.altura)) {  
+  if (!validaAltura(paciente.altura)) {
     erros.push("Altura invalida!");
   }
 
