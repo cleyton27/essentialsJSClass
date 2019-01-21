@@ -10,7 +10,7 @@ console.log(campoFiltro);
     //this for will interact by the name's array
 var pacientes = document.querySelectorAll(".paciente");
     if(this.value.length >0){
-
+ 
       for (var i = 0; i < pacientes.length; i++) {
        var paciente = pacientes[i];
        var tdNome = paciente.querySelector(".info-nome")
