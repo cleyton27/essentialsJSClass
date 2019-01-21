@@ -15,7 +15,11 @@ var pacientes = document.querySelectorAll(".paciente");
        var paciente = pacientes[i];
        var tdNome = paciente.querySelector(".info-nome")
        var nome = tdNome.textContent;
-       if(nome != this.value){
+       //new RegExp() creating regular expression that can be used when you want inprove your search
+       //the RegExp(this.value, "i"); i means case-insensitive
+       var expressao = new RegExp(this.value, "i" );
+       //.test(nome) return true or false
+       if(!expressao.test(nome)){
          paciente.classList.add("invisible");
        }else {
          paciente.classList.remove("invisible");
