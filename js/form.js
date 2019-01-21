@@ -27,6 +27,7 @@ if (erros.length >0) {
   return;
 }
  //console.log(pacienteTr);
+adiconaPacienteNaTabela(paciente);
 
  table.appendChild(pacienteTr);
 
@@ -35,6 +36,12 @@ if (erros.length >0) {
  mensagensErro.innerHTML =""
 
 });
+
+function adiconaPacienteNaTabela(paciente){
+   var pacienteTr = montarTr(paciente);
+   var tabela = document.querySelector("#tabela-pacientes");
+   tabela.appendChild(pacienteTr);
+}
 
 function exibeMensagensDeErro(erros){
   var ul = document.querySelector("#mensagens-erro")
